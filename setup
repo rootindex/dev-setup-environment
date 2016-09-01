@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+/**
+ * Copyright (c) 2016 Francois Raubenheimer.
+ */
+
+use FR\Application;
+
+if (!file_exists(__DIR__ . '/vendor/autoload.php')) {
+    throw new \RuntimeException('Please run composer install');
+}
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$application = new Application();
+$application->runApp();

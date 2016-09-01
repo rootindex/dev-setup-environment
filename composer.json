@@ -12,5 +12,10 @@
       "name": "Francois Raubenheimer",
       "email": "fran@fontera.com"
     }
-  ]
+  ],
+  "autoload": {
+    "psr-4": {
+      "FR\\": "src/"
+    }
+  }
 }
