@@ -5,6 +5,7 @@
 
 namespace FR;
 
+use FR\Console\Command\SetupCommand;
 use FR\Console\Command\TestCommand;
 
 /**
@@ -30,9 +31,12 @@ class Application extends \Symfony\Component\Console\Application
     public function runApp()
     {
         $commands = [
-            new TestCommand()
+            new TestCommand(),
+            new SetupCommand()
         ];
+        // add commands
         $this->addCommands($commands);
+        // startup main app
         return parent::run();
     }
 }

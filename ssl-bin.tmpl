@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+openssl genrsa -aes256 \
+    -out intermediate/private/{{ DOMAIN }}.key.pem 2048
+
+openssl req -config intermediate/openssl.cnf \
+    -key intermediate/private/{{ DOMAIN }}.key.pem \
+    -new -sha256 -out intermediate/csr/{{ DOMAIN }}.csr.pem
+
+openssl ca -config intermediate/openssl.cnf \
+    -extensions server_cert -days 375 -notext -md sha256 \
+    -in intermediate/csr/{{ DOMAIN }}.csr.pem \
+    -out intermediate/certs/{{ DOMAIN }}.cert.pem
+
+openssl rsa -in intermediate/private/{{ DOMAIN }}.key.pem \
+    -out intermediate/private/{{ DOMAIN }}.no-key.pem

@@ -12,5 +12,7 @@ if (!file_exists(__DIR__ . '/vendor/autoload.php')) {
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+define('__BASE__', __DIR__);
+
 $application = new Application();
 $application->runApp();
